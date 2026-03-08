@@ -8,12 +8,14 @@ Resolução: 1920x1080.
 
 Abaixo, apresento meu quadro consolidado com a classificação dos problemas identificados durante o ciclo de testes:
 
+### Panorama de Bugs por Severidade
+
 | Severidade | Quantidade | Exemplos Principais | Prioridade Predominante |
 | :--- | :---: | :--- | :--- |
-| **Crítico** | 2 | - Login com campos vazios (Issue 6)<br>- Confirmação de senha diferente (Issue 13) | **Alta** |
-| **Alto** | 7 | - Brute Force (Issue 5)<br>- Criação de contas vazias/duplicadas (Issues 7 e 8)<br>- E-mail/senha inválidos aceitos (Issues 11 e 12)<br>- Vulnerabilidade XSS (Issue 14) | **Alta** |
-| **Médio** | 5 | - Login com e-mail inválido (Issue 4)<br>- Campos com valores inválidos (Issues 9 e 10)<br>- Quebra de layout<br>- Falta de confirmação de e-mail | **Média/Alta** |
-| **Baixo** | 3 | - Regra de senha na tela errada (Issue 1)<br>- Sem visualização de senha (Issue 3)<br>- Mensagem de erro inesperada (Tela de Sucesso) | **Baixa/Média** |
+| **Crítico** | 2 | - Criar conta com campos vazios (Issue 7)<br>- Vulnerabilidade XSS (Issue 14) | **Crítica** |
+| **Alto** | 7 | - Brute Force (Issue 5)<br>- Login com conta vazia (Issue 6)<br>- Confirmação de senha diferente (Issue 13)<br>- Contas Duplicadas (Issue 8)<br>- Ausência de "Esqueci a senha" (Issue 19) | **Alta** |
+| **Médio** | 6 | - Tentativa de login em branco (Issue 2)<br>- Inserção de dados inválidos (Issue 9 e 10)<br>- Falta de Confirmar E-mail (Issue 16)<br>- Erro senha incorreta (Issue 18) | **Média / Alta** |
+| **Baixo** | 4 | - Regra de senha indevida (Issue 1)<br>- Sem visualização de senha (Issue 3)<br>- Quebra de Layout (Issue 15)<br>- Erro inesperado (Issue 17) | **Baixa / Média** |
 
 ##  Tela de Login
 
@@ -106,7 +108,7 @@ Abaixo, apresento meu quadro consolidado com a classificação dos problemas ide
 | :--- | :--- |
 | O sistema permite realizar login. | O sistema deveria impedir a criação de contas vazias e bloquear logins sem dados. |
 
-**Severidade:** Crítico | **Prioridade:** Alta
+**Severidade:** Alta | **Prioridade:** Alta
 
 ---
 
@@ -126,6 +128,19 @@ Abaixo, apresento meu quadro consolidado com a classificação dos problemas ide
 
 **Severidade:** Médio | **Prioridade:** Média
 
+### 19. Ausência da funcionalidade "Esqueci minha senha"
+**Descrição:** A tela de login não apresenta nenhuma opção para recuperação de credenciais em caso de perda da senha. 
+
+**Passos para reproduzir:**
+1. Acessar a tela de login do sistema.
+2. Observar a ausência de links ou botões para recuperação de senha.
+
+| Resultado Atual | Resultado Esperado |
+| :--- | :--- |
+| O sistema não oferece meio de recuperação de acesso. | Deve existir um link "Esqueci minha senha" que direcione para o fluxo de redefinição via e-mail. |
+
+**Severidade:** Alto | **Prioridade:** Alta
+
 ---
 
 ##  Tela de Criação de Conta
@@ -141,7 +156,7 @@ Abaixo, apresento meu quadro consolidado com a classificação dos problemas ide
 | :--- | :--- |
 | A conta é criada sem validação de dados. | O sistema deveria exigir o preenchimento dos campos obrigatórios antes de permitir o cadastro. |
 
-**Severidade:** Alto | **Prioridade:** Alta
+**Severidade:** Crítico | **Prioridade:** Crítico
 
 ---
 
@@ -231,7 +246,7 @@ Abaixo, apresento meu quadro consolidado com a classificação dos problemas ide
 | :--- | :--- |
 | Conta criada com senhas diferentes. | O sistema deveria informar que as senhas não coincidem e bloquear o cadastro. |
 
-**Severidade:** Crítico | **Prioridade:** Alta
+**Severidade:** Alta | **Prioridade:** Alta
 
 ---
 
@@ -246,7 +261,7 @@ Abaixo, apresento meu quadro consolidado com a classificação dos problemas ide
 | :--- | :--- |
 | O sistema aceita o código e cria a conta. | O sistema deveria sanitizar ou bloquear entradas contendo código HTML/JS. |
 
-**Severidade:** Alto | **Prioridade:** Alta
+**Severidade:** Crítico | **Prioridade:** Crítico
 
 ---
 
